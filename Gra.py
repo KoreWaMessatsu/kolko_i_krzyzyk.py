@@ -7,12 +7,38 @@ the_board_dictionary = {"1A": " ", "1B": " ", "1C": " ", "2A": " ", "2B": " ", "
 def is_field_empty(field_to_check):
     return the_board_dictionary[field_to_check] == " "
 
+#def all_fields_are_nonempty(dictionary):
+    #return not any(f == " " in f for f in dictionary)
+
+'''
+
+Dodać funkcje:
+
+human_move(fields) nic nie zwraca
+bot_move(fields) nic nie zwraca (pisze po planszy)
+game_ended(fields) zwracać bool (true/fals)
+
+madre sprawdzenie warunkow zwyciestwa
+przerobic petle gry, bo teraz w jednej iteracji robia sie dwa ruchy
+
+while warunki:
+    ruch(plansza)
+
+def ruch()
+    if (ruch_gracza):
+        human_move()
+    else 
+        bot_move
+
+ale wtedy musisz sobie trzymac zmienna bool ktora sie zmienia na wartosc przeciwna 
+(napisac funkcje do zmiany na wartosc przeciwna chyba, ze python juz cos takiego ma (reverse boolean google))
 
 
-
+'''
 def main_game_loop():
     player_move = 0
     bot_move = 0
+    all_moves = 0
 
     player_choice = input("Które pole chcesz zaznaczyć: ").upper()
     the_board_dictionary[player_choice] = 'X'
@@ -22,25 +48,35 @@ def main_game_loop():
     the_board_dictionary[bot_choice] = 'O'
     draw_the_board(the_board_dictionary)   
 
-
     while player_move <= 3 and bot_move <= 3:
         player_choice = input("Wybierz puste pole: ").upper()
-        
+
+        #if (not all_fields_are_nonempty):
+        #    print("dupa")
+
+        all_moves += 1
+        if (all_moves == 8):
+            break
         while not(is_field_empty(player_choice)):
             player_choice = input("Wybierz puste pole: ").upper()
-        
+
         the_board_dictionary[player_choice] = 'X'
 
         bot_choice = random.choice(list(the_board_dictionary))
 
+        all_moves += 1
+        if (all_moves == 8):
+            break    
         while not(is_field_empty(bot_choice)):
             bot_choice = random.choice(list(the_board_dictionary))
-            
+
         the_board_dictionary[bot_choice] = 'O'
         draw_the_board(the_board_dictionary)
 
         player_move += 1
         bot_move += 1
+
+    print("Koniec gry")
 
 def draw_the_board(the_board_dictionary):
     print("   " + "A" + " B" + " C")
