@@ -7,8 +7,48 @@ the_board_dictionary = {"1A": " ", "1B": " ", "1C": " ", "2A": " ", "2B": " ", "
 def is_field_empty(field_to_check):
     return the_board_dictionary[field_to_check] == " "
 
-#def all_fields_are_nonempty(dictionary):
-    #return not any(f == " " in f for f in dictionary)
+def all_fields_are_nonempty(the_board_dicitionary):
+    return not any(f == " " in f for f in the_board_dicitionary)
+
+def player_move():
+    player_choice = input("Wybierz puste pole: ").upper()
+    the_board_dictionary[player_choice] = 'X'
+    draw_the_board(the_board_dictionary)
+    main_game_loop(player_choice)
+
+def bot_move():
+    bot_choice = random.choice(list(the_board_dictionary))
+    the_board_dictionary[bot_choice] = 'O'
+    draw_the_board(the_board_dictionary) 
+    main_game_loop(bot_choice)
+
+def main_game_loop(player_choice, bot_choice, field_to_check):
+    player_count_move = 0
+    bot_count_move = 0
+    #each_count_move = 0
+    while player_count_move <= 5:
+        if not(is_field_empty(field_to_check)):
+            player_count_move += 1
+            return player_move
+        elif not(is_field_empty(field_to_check)): 
+            bot_count_move += 1
+            return bot_move
+        else:
+            pass
+
+def draw_the_board(the_board_dictionary):
+    print("   " + "A" + " B" + " C")
+    print("1 |" + the_board_dictionary["1A"] + "|" + the_board_dictionary["1B"] + "|" + the_board_dictionary["1C"] + "|")
+    print("  -------")
+    print("2 |" + the_board_dictionary["2A"] + "|" + the_board_dictionary["2B"] + "|" + the_board_dictionary["2C"] + "|")
+    print("  -------")
+    print("3 |" + the_board_dictionary["3A"] + "|" + the_board_dictionary["3B"] + "|" + the_board_dictionary["3C"] + "|")
+
+main_game_loop(player_move, bot_move)
+pprint.pprint(the_board_dictionary)
+
+
+
 
 '''
 
@@ -34,7 +74,7 @@ ale wtedy musisz sobie trzymac zmienna bool ktora sie zmienia na wartosc przeciw
 (napisac funkcje do zmiany na wartosc przeciwna chyba, ze python juz cos takiego ma (reverse boolean google))
 
 
-'''
+
 def main_game_loop():
     player_move = 0
     bot_move = 0
@@ -78,13 +118,6 @@ def main_game_loop():
 
     print("Koniec gry")
 
-def draw_the_board(the_board_dictionary):
-    print("   " + "A" + " B" + " C")
-    print("1 |" + the_board_dictionary["1A"] + "|" + the_board_dictionary["1B"] + "|" + the_board_dictionary["1C"] + "|")
-    print("  -------")
-    print("2 |" + the_board_dictionary["2A"] + "|" + the_board_dictionary["2B"] + "|" + the_board_dictionary["2C"] + "|")
-    print("  -------")
-    print("3 |" + the_board_dictionary["3A"] + "|" + the_board_dictionary["3B"] + "|" + the_board_dictionary["3C"] + "|")
+'''
 
-main_game_loop()
-pprint.pprint(the_board_dictionary)
+
