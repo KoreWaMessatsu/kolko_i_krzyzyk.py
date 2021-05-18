@@ -50,7 +50,6 @@ def draw_the_board(the_board_dictionary):
     print("  -------")
     print("3 |" + the_board_dictionary["3A"] + "|" + the_board_dictionary["3B"] + "|" + the_board_dictionary["3C"] + "|")
 
-
 main_game_loop()
 pprint.pprint(the_board_dictionary)
 
