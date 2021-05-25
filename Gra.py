@@ -12,11 +12,7 @@ def is_field_empty(field_to_check, board_dictionary):
             print("Wybierz istniejące pole!")
             return False
 
-#def all_fields_are_nonempty(the_board_dicitionary):
-#    return not any(f == " " in f for f in the_board_dicitionary)
-
 def player_winning_con(the_board_dictionary):
-    #check_field = "X"
     for check_field in the_board_dictionary:
         if the_board_dictionary["1A"] == "X" and the_board_dictionary["2A"] == "X" and the_board_dictionary["3A"] == "X":
             print("Wygrałeś!")
@@ -43,7 +39,6 @@ def player_winning_con(the_board_dictionary):
             return False
 
 def bot_winning_con(the_board_dictionary):
-    #check_field = "X"
     for check_field in the_board_dictionary:
         if the_board_dictionary["1A"] == "O" and the_board_dictionary["2A"] == "O" and the_board_dictionary["3A"] == "O":
             print("Bot wygrał!")
@@ -104,7 +99,6 @@ def main_game_loop():
             else:
                 print("Remis")
                 break
-
 
 def draw_the_board(the_board_dictionary):
     print("   " + "A" + " B" + " C")
